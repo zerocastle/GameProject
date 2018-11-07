@@ -82,6 +82,15 @@ public class MainScreen extends JFrame implements ActionListener {
 		this.setVisible(true);
 
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		this.start.setEnabled(false);
+		Thread t1 = new Thread(new MainLabel());
+		t1.start();
+
+	}
 
 	class MainLabel extends JLabel implements Runnable {
 		public MainLabel() {
@@ -110,12 +119,12 @@ public class MainScreen extends JFrame implements ActionListener {
 		}
 
 		@Override
-		public void run() {
+		public synchronized void run() {
 			// TODO Auto-generated method stub
 			for (int i = 0; i < 10000; i++) {
 				try {
 					Thread.sleep(1000);
-
+					//int -> String
 					score.setText(Integer.toString(i));
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -126,12 +135,6 @@ public class MainScreen extends JFrame implements ActionListener {
 		}
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		Thread t1 = new Thread(new MainLabel());
-		t1.start();
-
-	}
+	
 
 }
