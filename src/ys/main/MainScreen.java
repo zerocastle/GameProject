@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -29,7 +30,8 @@ public class MainScreen extends JFrame implements ActionListener {
 	JButton start = null;
 	JButton stop = null;
 	JButton again = null;
-
+	Game game = null;
+	JLabel mainLabel = null;
 	public MainScreen() {
 		// TODO Auto-generated constructor stub
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -65,8 +67,9 @@ public class MainScreen extends JFrame implements ActionListener {
 		again.setBounds(1100, 220, 100, 60);
 
 		// 매인
-		JLabel mainLabel = new MainLabel();
+		mainLabel = new MainLabel();
 		mainLabel.setBounds(10, 10, 1000, 700);
+//		mainLabel.add(game);
 
 		JPanel panel = new JPanel(null);
 		panel.add(score); // 점수
@@ -88,7 +91,9 @@ public class MainScreen extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		this.start.setEnabled(false);
 		Thread t1 = new Thread(new MainLabel());
+		Thread t2 = new Thread(new Game());
 		t1.start();
+		t2.start();
 
 	}
 
@@ -119,10 +124,13 @@ public class MainScreen extends JFrame implements ActionListener {
 		}
 
 		@Override
-		public synchronized void run() {
+		public void run() {
 			// TODO Auto-generated method stub
+			game = new Game();
+			mainLabel.add(game);
 			for (int i = 0; i < 10000; i++) {
 				try {
+					
 					Thread.sleep(1000);
 					//int -> String
 					score.setText(Integer.toString(i));
