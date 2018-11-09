@@ -26,15 +26,16 @@ public class DoubleBuffering extends JFrame implements Runnable {
 	int x, y, xDirection, yDirection, score = 0, rectX, rectY;
 	Image dbImage;
 	Graphics dbg;
-	Image face, coin;
+	Image face, coin ,icon;
 	boolean mouseOnScreen;
 	boolean won = false;
 
 	// 기본적인 설정
-	private final int WIDTH = 500;
-	private final int HEIGHT = 500;
-	private final int circleSize = 32;
-	private final int rectSize = 32;
+	private final int WIDTH = 500; // 가로 화면 크기
+	private final int HEIGHT = 500; //세로 화면크기
+	
+	private final int circleSize = 32; // 동전 먹는거 판단
+	private final int rectSize = 32; // 동전 먹는거 판단
 	private final Font font = new Font("맑은 고딕", Font.BOLD | Font.ITALIC, 30);
 
 	// 음악 관련 설정
@@ -76,12 +77,13 @@ public class DoubleBuffering extends JFrame implements Runnable {
 	public void setYDirection(int ydir) {
 		yDirection = ydir;
 	}
-
+	
+	//마우스 이벤트 처리
 	public class MO extends MouseAdapter {
 		@Override
 		public void mousePressed(MouseEvent e) {
-			int xCoord = e.getX();
-			int yCoord = e.getY();
+			int xCoord = e.getX(); // 마우스 클릭시  클릭시점에 x 축 좌표 봔환
+			int yCoord = e.getY(); // 마우스 클릭시 클릭시점에 y 축 좌표 반환
 			x = xCoord - circleSize / 2;
 			y = yCoord - circleSize / 2;
 		}
@@ -145,12 +147,16 @@ public class DoubleBuffering extends JFrame implements Runnable {
 		face = faceIcon.getImage();
 		ImageIcon coinIcon = new ImageIcon(getClass().getResource("/image/coin.png"));
 		coin = coinIcon.getImage();
+		ImageIcon iconIcon = new ImageIcon(getClass().getResource("/image/icon.png"));
+		icon = iconIcon.getImage(); 
 
 		// 게임 기초 설정
 		KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 		manager.addKeyEventDispatcher(new AL());
 		addMouseListener(new MO());
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		this.setIconImage(icon); // 아이콘 이미지 세팅
 		
 		setTitle("더블 버퍼링");
 		setSize(WIDTH, HEIGHT);
@@ -218,6 +224,7 @@ public class DoubleBuffering extends JFrame implements Runnable {
 		// 아직 승리하지 않은 경우에
 		if (won == false)
 			repaint();
+		
 	}
 
 	// 메인 함수
