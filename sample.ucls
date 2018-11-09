@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="doublebuffering.DoubleBuffering.AL" project="GameProject" 
     file="/GameProject/소스 코드/doublebuffering/DoubleBuffering.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="208" x="-60" y="577"/>    
+    <position height="-1" width="-1" x="208" y="571"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="doublebuffering.DoubleBuffering" project="GameProject" 
     file="/GameProject/소스 코드/doublebuffering/DoubleBuffering.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="549" width="178" x="64" y="-12"/>    
+    <position height="-1" width="-1" x="317" y="207"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="doublebuffering.DoubleBuffering.MO" project="GameProject" 
     file="/GameProject/소스 코드/doublebuffering/DoubleBuffering.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="193" x="188" y="577"/>    
+    <position height="-1" width="-1" x="448" y="598"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

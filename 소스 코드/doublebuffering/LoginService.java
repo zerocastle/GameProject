@@ -1,4 +1,4 @@
-package ys.login.test;
+package doublebuffering;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,11 +7,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class LoginService {
-
-//	public static void main(String[] args) {
-//		boolean test = LoginTest("user1", "1234");
-//		System.out.println(test);
-//	}
+	
+//	private static boolean IN = false;
 
 	public static boolean LoginTest(String id, String password) {
 		// TODO Auto-generated method stub
@@ -20,7 +17,7 @@ public class LoginService {
 		ResultSet set = null;
 		boolean signal = false;
 
-		String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+		String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl"; 
 		String dbUser = "practice";
 		String dbPassword = "123456";
 		
