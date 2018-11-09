@@ -17,7 +17,7 @@ public class LoginService {
 		ResultSet set = null;
 		boolean signal = false;
 
-		String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl"; 
+		String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe"; 
 		String dbUser = "practice";
 		String dbPassword = "123456";
 		
