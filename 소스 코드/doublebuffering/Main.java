@@ -107,10 +107,11 @@ public class Main extends JFrame implements ActionListener {
 			boolean existLogin = LoginService.LoginTest(id, password);
 			if (existLogin) {
 				JOptionPane.showMessageDialog(null, "success");
-				this.dispose(); // 창 끄게함 
+				this.dispose(); // 창 끄게함
 				// 쓰레드 실행 DoubleBuffering 클래스를 호출한다 .
-				Thread t1 = new Thread(new DoubleBuffering());
-				t1.start();
+
+//				Thread t1 = new Thread(new DoubleBuffering());
+//				t1.start();
 			} else {
 				JOptionPane.showMessageDialog(null, "fail"); // 메세지 띄우기
 			}
