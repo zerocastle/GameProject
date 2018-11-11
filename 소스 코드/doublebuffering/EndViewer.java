@@ -27,7 +27,7 @@ class EventRnak implements ActionListener {
 		String command = temp.getText();
 		if(command.equals("랭킹보기!!!")) {
 			System.out.println("들어옴?");
-			new ShowRank(panel);
+//			new ShowRank(panel); 여기서부터 수술 들어가야 함 
 //			this.panel.setFocusable(false);
 			this.panel.setVisible(true);
 		}
