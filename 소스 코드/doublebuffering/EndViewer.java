@@ -1,12 +1,11 @@
 package doublebuffering;
 
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ys.db.ShowRank;
@@ -23,15 +22,16 @@ class EventRnak implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent a) {
 		// TODO Auto-generated method stub
-		JButton temp =(JButton) a.getSource();
+		JButton temp = (JButton) a.getSource();
 		String command = temp.getText();
-		if(command.equals("랭킹보기!!!")) {
+		if (command.equals("랭킹보기!!!")) {
 			System.out.println("들어옴?");
-//			new ShowRank(panel); 여기서부터 수술 들어가야 함 
-//			this.panel.setFocusable(false);
-			this.panel.setVisible(true);
+			panel.setVisible(false);
+			temp.setVisible(false);
+			new ShowRank(panel);
+
 		}
-		
+
 	}
 
 }
@@ -42,25 +42,27 @@ public class EndViewer extends JPanel {
 
 	JButton button = null;
 	JButton button2 = null;
-	Graphics gp = null;
-	public EndViewer(Graphics g) {
+//	Graphics gp = null;
+
+	JFrame frame = new JFrame();
+
+	public EndViewer(JFrame frame) {
 		// TODO Auto-generated constructor stub
-		this.setSize(DoubleBuffering.WIDTH , DoubleBuffering.HEIGHT);
-		this.gp = g;
-		PAGE = new Stack<Object>();
+		this.frame = frame;
+		this.setSize(DoubleBuffering.WIDTH, DoubleBuffering.HEIGHT);
+		PAGE = new Stack<Object>(); // EndViewer 객체를 넣어준다 . 두번쨰 페이지로
 		PAGE.push(this);
 		button = new JButton("랭킹등록!!!");
 		button2 = new JButton("랭킹보기!!!");
 
 		this.add(button);
 		this.add(button2);
-		
-		g.drawImage(null,0,0, WIDTH,HEIGHT,this);
+
 		button.addActionListener(new EventRnak(this));
 		button2.addActionListener(new EventRnak(this));
-		this.setVisible(true);
+
+		this.frame.add(this);
+		this.frame.setVisible(true);
 	}
-	
-	public void paint(Graphics g) {};
 
 }

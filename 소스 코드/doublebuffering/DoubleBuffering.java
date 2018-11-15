@@ -17,13 +17,14 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class DoubleBuffering extends JFrame implements Runnable {
-	
+
 	public static boolean THREAD_STATUS = true;
-	
+
 	// ==============
 	boolean returnPosition = true; // 다시 적을 생성할수 있도록 신호를 주는것
 	// 캐릭터 위치, 점수, 더블 버퍼링, 이미지 변수, 마우스 변수, 승리 판정 변수 선언
@@ -44,7 +45,6 @@ public class DoubleBuffering extends JFrame implements Runnable {
 	// 기본적인 설정
 	public final static int WIDTH = 1600; // 가로 화면 크기
 	public final static int HEIGHT = 900; // 세로 화면크기
-	
 
 	private final int circleSize = 32; // 스마일 게임 케릭터
 	private final int rectSize = 32; // 동전 먹는거 판단 동전의 크기를 말한다 .
@@ -260,6 +260,7 @@ public class DoubleBuffering extends JFrame implements Runnable {
 		g.drawImage(face, x, y, this); // 얼굴 그려주기
 		g.drawImage(coin, rectX, rectY, this); // 코인 그려주기
 
+		// 적 그려주기
 		for (int i = 0; i < map.size(); i++) {
 			g.drawImage(enemy, map.get(i), enemyY, this);
 		}
@@ -293,17 +294,31 @@ public class DoubleBuffering extends JFrame implements Runnable {
 			if (this.enemyXList[i] - circleSize < x && x < this.enemyXList[i] + rectSize && enemyY - circleSize < y
 					&& y < enemyY + rectSize) {
 				g.drawString("잡아 먹혔어요 !!!", WIDTH / 2, HEIGHT / 2);
-				JOptionPane.showMessageDialog(this, "GAME OVER");
+
 				loose = true;
 				gogo = true;
+				this.endDrawScreen(g); // 끝났을 떄 그림을 초기화 시킨다.
 			}
 		}
 
 		// 아직 승리하지 않았을때
 		if (gogo == false)
 			repaint(); // 계속해서 그려준다.
-		
-		
+
+	}
+
+	private void endDrawScreen(Graphics g) {
+		// TODO Auto-generated method stub
+		// 현제 드로윙을 없에준다.
+//		this.setFocusable(false);
+//		this.setFocusableWindowState(true);
+//		setBackground(null);
+		dbImage = createImage(WIDTH, HEIGHT);
+		dbg = dbImage.getGraphics();
+
+		g.drawImage(dbImage, 0, 0, 0, 0, this);
+
+		this.add(new EndViewer(this));
 
 	}
 

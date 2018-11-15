@@ -1,6 +1,5 @@
 package ys.db;
 
-import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,22 +9,20 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 
 
 
-class MyFrame extends JFrame{
-	public MyFrame() {
-		// TODO Auto-generated constructor stub
-		ShowRank show = new ShowRank();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(500,500);
-		this.add(show);
-		show.setLayout(new BoxLayout(show, BoxLayout.Y_AXIS));
-		this.setVisible(true);
-	}
-}
+//class MyFrame extends JFrame{
+//	public MyFrame() {
+//		// TODO Auto-generated constructor stub
+//		ShowRank show = new ShowRank();
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setSize(500,500);
+//		this.add(show);
+//		show.setLayout(new BoxLayout(show, BoxLayout.Y_AXIS));
+//		this.setVisible(true);
+//	}
+//}
 
 
 public class ShowRank extends JPanel{
@@ -42,9 +39,18 @@ public class ShowRank extends JPanel{
 
 	String query = "select * from gameMember order by score desc";
 	
-	public ShowRank() {
+	public ShowRank(JPanel panel) {
 		// TODO Auto-generated constructor stub
+		this.panel = panel;
 		this.showRankList();
+		this.panel.add(this);
+		panel.setVisible(true);
+		
+//		leftButton.setVisible(false);
+//		leftButton.setBounds(140, 310, 60, 60); // (x,y,width,height)
+//		leftButton.setBorderPainted(false);
+//		leftButton.setContentAreaFilled(false);
+//		leftButton.setFocusPainted(false);
 	}
 	// 일딴 테스트까지해봄 생성자부터 붙이기 작업 처리하기 
 
@@ -89,8 +95,8 @@ public class ShowRank extends JPanel{
 		}
 	}
 	
-	public static void main(String[] args) {
-		new MyFrame();
-	}
+//	public static void main(String[] args) {
+//		new MyFrame();
+//	}
 
 }
