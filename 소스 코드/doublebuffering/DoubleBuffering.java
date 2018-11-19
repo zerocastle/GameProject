@@ -317,7 +317,7 @@ public class DoubleBuffering extends JFrame implements Runnable {
 		dbg = dbImage.getGraphics();
 
 		g.drawImage(dbImage, 0, 0, 0, 0, this);
-
+		
 		this.add(new EndViewer(this));
 
 	}

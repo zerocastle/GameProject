@@ -26,14 +26,14 @@ import javax.swing.JPanel;
 
 
 public class ShowRank extends JPanel{
-
+	
 	JPanel panel = null;
 
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet set = null;
 
-	String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+	String dbUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String dbUser = "practice";
 	String dbPassword = "123456";
 
@@ -45,7 +45,7 @@ public class ShowRank extends JPanel{
 		this.showRankList();
 		this.panel.add(this);
 		panel.setVisible(true);
-		
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 //		leftButton.setVisible(false);
 //		leftButton.setBounds(140, 310, 60, 60); // (x,y,width,height)
 //		leftButton.setBorderPainted(false);

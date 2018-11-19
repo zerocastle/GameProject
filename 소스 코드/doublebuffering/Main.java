@@ -87,7 +87,7 @@ public class Main extends JFrame implements ActionListener {
 		@Override
 		public void paint(Graphics g) {
 			// TODO Auto-generated method stub
-			g.drawImage(img, 0, 0, null);
+			
 
 		}
 	}
